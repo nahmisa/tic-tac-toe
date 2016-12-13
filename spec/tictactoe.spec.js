@@ -20,6 +20,10 @@ describe('TicTacToe', function() {
       expect(testTicTacToe.player2).toBeDefined();
     });
 
+    it('should have turns', function() {
+      expect(testTicTacToe.turns).toBeDefined();
+    });
+
   });
 
   describe('move', function() {

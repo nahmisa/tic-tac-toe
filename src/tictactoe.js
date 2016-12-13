@@ -5,6 +5,7 @@ var TicTacToe = function() {
   this.board = new Board();
   this.player1 = new Player("Sarah", "X");
   this.player2 = new Player("Heather", "O");
+  this.turns = 0;
 };
 
 TicTacToe.prototype.move = function(placement) {
@@ -20,8 +21,6 @@ TicTacToe.prototype.move = function(placement) {
   return (this.isValidPlacement(this.placement) ? this.placement : false);
 
 };
-
-
 
 TicTacToe.prototype.isValidPlacement = function(placement) {
   this.placement = placement;
