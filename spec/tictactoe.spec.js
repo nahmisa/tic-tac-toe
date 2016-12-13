@@ -32,4 +32,16 @@ describe('TicTacToe', function() {
 
   });
 
+  describe('isValidPlacement', function() {
+
+    it('should return false if the placement on the board does not exist', function() {
+      expect(testTicTacToe.isValidPlacement("1000")).toBeFalsy();
+    });
+
+    // it('should return false if the placement on the board is already occupied', function() {
+    //   expect(testTicTacToe.isValidPlacement("1")).toBeFalsy();
+    // });
+
+  });
+
 });

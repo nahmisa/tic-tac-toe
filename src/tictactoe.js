@@ -23,6 +23,14 @@ TicTacToe.prototype.move = function(placement) {
 
 };
 
+TicTacToe.prototype.isValidPlacement = function(placement) {
+  this.placement = placement;
+
+  return false;
+
+
+};
+
 module.exports = TicTacToe;
 
 // DO NOT REMOVE THIS
