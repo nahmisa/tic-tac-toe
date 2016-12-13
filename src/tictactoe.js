@@ -4,6 +4,9 @@ var TicTacToe = function () {
   this.player2 = "Heather";
 };
 
+var Board = function () {
+};
+
 module.exports = TicTacToe;
 
 // DO NOT REMOVE THIS

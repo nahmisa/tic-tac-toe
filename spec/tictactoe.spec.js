@@ -1,5 +1,6 @@
 // Do not remove
 import TicTacToe from 'tictactoe';
+import Board from 'tictactoe';
 
 
 describe('TicTacToe', function() {
@@ -19,7 +20,17 @@ describe('TicTacToe', function() {
       expect(testTicTacToe.player2).toBeDefined();
     });
 
-
   });
 
+});
+
+describe('Board', function() {
+  var testBoard = new Board();
+
+  describe('Board', function() {
+    it('should be defined', function() {
+      expect(testBoard).toBeDefined();
+    });
+
+  });
 });
