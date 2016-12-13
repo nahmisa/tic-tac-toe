@@ -6,11 +6,18 @@ var TicTacToe = function() {
   this.player1 = new Player("Sarah", "X");
   this.player2 = new Player("Heather", "O");
   this.players = [this.player1, this.player2];
-  this.currentPlayer = 0;
+  // pick randomly between 2 players: array of 0 and 1
+  this.currentPlayer = sample([0,1]);
 
   this.turns = 0;
 
 };
+
+// helper function to wrap ugly random
+function sample(array) {
+  var index = Math.floor ( Math.random() * array.length );
+  return array[index];
+}
 
 TicTacToe.prototype.move = function(placement) {
   // A move will:
@@ -69,9 +76,6 @@ TicTacToe.prototype.changePlayers = function() {
   this.currentPlayer = ((this.currentPlayer === 0) ? 1 : 0);
 
 };
-
-
-
 
 module.exports = TicTacToe;
 
