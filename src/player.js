@@ -1,5 +1,6 @@
-var Player = function(name) {
+var Player = function(name, marker) {
   this.name = name;
+  this.marker = marker;
 };
 
 module.exports = Player;

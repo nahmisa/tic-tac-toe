@@ -3,16 +3,23 @@ import Player from 'player';
 
 describe('Player', function() {
 
-  var testPlayer = new Player("Testy");
+  var testPlayerX = new Player("Testy", "X");
+  var testPlayerO = new Player("Crabby", "O");
 
   describe('Player', function() {
     it('should be defined', function() {
-      expect(testPlayer).toBeDefined();
+      expect(testPlayerX).toBeDefined();
     });
 
     it('should have a name', function() {
-      expect(testPlayer.name).toEqual("Testy");
+      expect(testPlayerX.name).toEqual("Testy");
+    });
+
+    it('should be assigned a marker', function() {
+      expect(testPlayerX.marker).toEqual("X");
+      expect(testPlayerO.marker).toEqual("O");
     });
 
   });
+
 });
