@@ -49,6 +49,19 @@ TicTacToe.prototype.updateBoard = function(boardPosition, marker) {
   return this.board;
 };
 
+TicTacToe.prototype.endMove = function() {
+  // Ending the move will:
+  //   - increment the turns counter by 1
+  //   - switch current player
+};
+
+TicTacToe.prototype.addTurn = function() {
+  this.turns += 1;
+};
+
+
+
+
 module.exports = TicTacToe;
 
 // DO NOT REMOVE THIS

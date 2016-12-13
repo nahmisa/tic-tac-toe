@@ -80,4 +80,16 @@ describe('TicTacToe', function() {
 
   });
 
+  describe('addTurn', function() {
+
+    it('should increment the games turns by 1', function() {
+      var gameTurns = testTicTacToe.turns;
+
+      testTicTacToe.addTurn();
+
+      expect(testTicTacToe.turns).toEqual(gameTurns + 1);
+    });
+
+  });
+
 });
