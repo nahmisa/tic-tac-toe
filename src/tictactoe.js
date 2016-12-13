@@ -1,4 +1,6 @@
-var TicTacToe = function () {};
+var TicTacToe = function () {
+  this.board = [];
+};
 
 module.exports = TicTacToe;
 
