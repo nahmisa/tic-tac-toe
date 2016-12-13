@@ -1,5 +1,5 @@
 var TicTacToe = function () {
-  this.board = [];
+  this.board = new Board();
   this.player1 = "Sarah";
   this.player2 = "Heather";
 };
