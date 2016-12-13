@@ -80,6 +80,21 @@ describe('TicTacToe', function() {
 
   });
 
+  describe('endMove', function() {
+
+    it('should increment the games turns by 1 AND change the current player', function() {
+      var gameTurns = testTicTacToe.turns;
+      var originalPlayer = testTicTacToe.currentPlayer;
+
+      testTicTacToe.endMove();
+
+      expect(testTicTacToe.turns).toEqual(gameTurns + 1);
+      expect(testTicTacToe.currentPlayer).not.toEqual(originalPlayer);
+
+    });
+
+  });
+
   describe('addTurn', function() {
 
     it('should increment the games turns by 1', function() {

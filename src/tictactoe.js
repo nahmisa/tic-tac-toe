@@ -57,6 +57,8 @@ TicTacToe.prototype.endMove = function() {
   // Ending the move will:
   //   - increment the turns counter by 1
   //   - switch current player
+  this.addTurn();
+  this.changePlayers();
 };
 
 TicTacToe.prototype.addTurn = function() {
