@@ -4,9 +4,7 @@ import TicTacToe from 'tictactoe';
 describe('TicTacToe', function() {
 
   var testTicTacToe = new TicTacToe();
-  var sarah = testTicTacToe.player1;
-  var heather = testTicTacToe.player2;
-
+  var occupiedTicTacToe = new TicTacToe();
 
   describe('TicTacToe', function() {
     it('should be defined', function() {
@@ -38,14 +36,22 @@ describe('TicTacToe', function() {
       expect(testTicTacToe.isValidPlacement([0, 1000])).toBeFalsy();
     });
 
-    // it('should return false if the placement on the board is already occupied', function() {
-    //   expect(testTicTacToe.isValidPlacement("1")).toBeFalsy();
-    // });
+    it('should return false if the placement on the board is already occupied', function() {
+
+      var occupiedGrid = [
+        ['X', 'O', null],
+        [null, null, null],
+        [null, null, null]
+      ];
+
+      occupiedTicTacToe.board.grid = occupiedGrid;
+
+      expect(occupiedTicTacToe.isValidPlacement([0,0])).toBeFalsy();
+    });
 
     it('should return true if the placement on the board is not occupied', function() {
       expect(testTicTacToe.isValidPlacement([0, 1])).toBeTruthy();
     });
-
 
   });
 
