@@ -1,6 +1,7 @@
 // Do not remove
 import TicTacToe from 'tictactoe';
 import Board from 'tictactoe';
+import Player from 'tictactoe';
 
 
 describe('TicTacToe', function() {
@@ -30,6 +31,17 @@ describe('Board', function() {
   describe('Board', function() {
     it('should be defined', function() {
       expect(testBoard).toBeDefined();
+    });
+
+  });
+});
+
+describe('Player', function() {
+  var testPlayer = new Player();
+
+  describe('Player', function() {
+    it('should be defined', function() {
+      expect(testPlayer).toBeDefined();
     });
 
   });

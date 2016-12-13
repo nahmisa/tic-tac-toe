@@ -7,6 +7,9 @@ var TicTacToe = function () {
 var Board = function () {
 };
 
+var Player = function () {
+};
+
 module.exports = TicTacToe;
 
 // DO NOT REMOVE THIS
