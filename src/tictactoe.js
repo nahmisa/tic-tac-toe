@@ -1,7 +1,7 @@
 var TicTacToe = function () {
   this.board = new Board();
-  this.player1 = "Sarah";
-  this.player2 = "Heather";
+  this.player1 = new Player();
+  this.player2 = new Player();
 };
 
 var Board = function () {
