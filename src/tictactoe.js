@@ -5,7 +5,11 @@ var TicTacToe = function() {
   this.board = new Board();
   this.player1 = new Player("Sarah", "X");
   this.player2 = new Player("Heather", "O");
+  this.players = [this.player1, this.player2];
+  this.currentPlayer = 0;
+
   this.turns = 0;
+
 };
 
 TicTacToe.prototype.move = function(placement) {
@@ -57,6 +61,11 @@ TicTacToe.prototype.endMove = function() {
 
 TicTacToe.prototype.addTurn = function() {
   this.turns += 1;
+};
+
+TicTacToe.prototype.changePlayers = function() {
+  this.currentPlayer = ((this.currentPlayer === 0) ? 1 : 0);
+
 };
 
 

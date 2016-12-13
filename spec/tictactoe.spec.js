@@ -92,4 +92,20 @@ describe('TicTacToe', function() {
 
   });
 
+  describe('changePlayers', function() {
+
+    it('change the current player to next player and back again', function() {
+      var originalPlayer = testTicTacToe.currentPlayer;
+
+      testTicTacToe.changePlayers();
+      expect(testTicTacToe.currentPlayer).not.toEqual(originalPlayer);
+
+      testTicTacToe.changePlayers();
+      expect(testTicTacToe.currentPlayer).toEqual(originalPlayer);
+
+
+    });
+
+  });
+
 });
