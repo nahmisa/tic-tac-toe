@@ -1,5 +1,9 @@
 var Board = function() {
-  this.grid = [[], [], []];
+  this.grid = [
+    [null, null, null],
+    [null, null, null],
+    [null, null, null]
+  ];
 };
 
 module.exports = Board;
