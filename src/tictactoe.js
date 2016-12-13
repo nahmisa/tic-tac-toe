@@ -11,15 +11,17 @@ TicTacToe.prototype.move = function(placement) {
   // A move will:
   //   - get the placement
   //      format of placement argument: [rowIndex, columnIndex]
-  //   - check the board for availability
-  //     - return FALSE if not available
-  //     - return the placement if available
+  //   - check the board for valid placement
+  //     - return FALSE if not valid
+  //     - return the placement if valid
 
 
 
   this.placement = placement;
 
-  return this.placement;
+  return (this.isValidPlacement(this.placement) ? this.placement : false);
+
+
 
 
 };
@@ -31,7 +33,7 @@ TicTacToe.prototype.isValidPlacement = function(placement) {
 
   var boardPosition = this.board.grid[this.row][this.column];
 
-  if ( boardPosition === null) {
+  if ( boardPosition === null ) {
     return true;
   } else {
     return false;

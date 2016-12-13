@@ -27,7 +27,7 @@ describe('TicTacToe', function() {
   describe('move', function() {
 
     it('should return the placement', function() {
-      expect(testTicTacToe.move("1")).toBeTruthy();
+      expect(testTicTacToe.move([0,0])).toBeTruthy();
     });
 
   });
