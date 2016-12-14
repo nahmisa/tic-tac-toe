@@ -6,6 +6,12 @@ describe('TicTacToe', function() {
   var testTicTacToe = new TicTacToe();
   var occupiedTicTacToe = new TicTacToe();
 
+  // Boards to check that we can win in various ways
+  var verticalTicTacToe = new TicTacToe();
+  var horizontalTicTacToe = new TicTacToe();
+  var diagonalTicTacToe = new TicTacToe();
+  var tieTicTacToe = new TicTacToe();
+
   describe('TicTacToe', function() {
     it('should be defined', function() {
       expect(testTicTacToe).toBeDefined();
@@ -104,6 +110,26 @@ describe('TicTacToe', function() {
 
       expect(testTicTacToe.turns).toEqual(gameTurns + 1);
     });
+
+  });
+
+  describe('hasWon', function() {
+
+    var tieGrid = [
+      ['X', 'O', 'X'],
+      ['O', 'X', 'O'],
+      ['O', 'X', 'O']
+    ];
+
+    tieTicTacToe.board.grid = tieGrid;
+
+    it('should return FALSE if no one has won', function() {
+      // incomplete board
+      expect(testTicTacToe.hasWon()).toBeFalsy();
+      // complete board (tie)
+      expect(tieTicTacToe.hasWon()).toBeFalsy();
+    });
+
 
   });
 

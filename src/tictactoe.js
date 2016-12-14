@@ -63,13 +63,20 @@ TicTacToe.prototype.updateBoard = function(boardPosition, marker) {
 TicTacToe.prototype.endMove = function() {
   // Ending the move will:
   //   - increment the turns counter by 1
+  //   - check if the game has been won
   //   - switch current player
+
   this.addTurn();
+  // this.hasWon();
   this.changePlayers();
 };
 
 TicTacToe.prototype.addTurn = function() {
   this.turns += 1;
+};
+
+TicTacToe.prototype.hasWon = function() {
+  return false;
 };
 
 TicTacToe.prototype.changePlayers = function() {
