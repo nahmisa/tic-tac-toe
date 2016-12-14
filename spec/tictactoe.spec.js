@@ -49,7 +49,7 @@ describe('TicTacToe', function() {
       expect(tieTicTacToe.playTurn([2,1])).toEqual("The Game is Over. You have tied.");
     });
 
-    it('should output the correct message when the game is tied', function() {
+    it('should output the correct message when someone wins', function() {
       winTicTacToe.playTurn([0,0]);
       winTicTacToe.playTurn([0,1]);
       winTicTacToe.playTurn([1,1]);
