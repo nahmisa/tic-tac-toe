@@ -123,12 +123,30 @@ describe('TicTacToe', function() {
 
     tieTicTacToe.board.grid = tieGrid;
 
+    var horizontalGrid = [
+      ['X', 'X', 'X'],
+      ['O', null, 'O'],
+      [null, null, null]
+    ];
+
+    horizontalTicTacToe.board.grid = horizontalGrid;
+
     it('should return FALSE if no one has won', function() {
-      // incomplete board
+      // incomplete board (contains null)
       expect(testTicTacToe.hasWon()).toBeFalsy();
       // complete board (tie)
       expect(tieTicTacToe.hasWon()).toBeFalsy();
     });
+
+    it('should not match nulls when evaluating markers for matches', function() {
+      expect(testTicTacToe.hasWon()).toBeFalsy();
+    });
+
+    it('should return TRUE if 3 markers match horizontally', function() {
+      expect(horizontalTicTacToe.hasWon()).toBeTruthy();
+    });
+
+
 
 
   });

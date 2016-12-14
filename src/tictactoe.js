@@ -76,6 +76,17 @@ TicTacToe.prototype.addTurn = function() {
 };
 
 TicTacToe.prototype.hasWon = function() {
+  // grid[row][column]
+  var grid = this.board.grid;
+
+  // A horizaontal match victory - all columns in same row are equal and none is null
+  for (var i = 0; i < 3; i++) {
+    if(grid[i][0] == grid[i][1] && grid[i][0] == grid[i][2] && grid[i][0] !== null){
+      return true;
+    }
+  }
+
+
   return false;
 };
 
