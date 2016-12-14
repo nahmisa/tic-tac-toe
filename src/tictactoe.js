@@ -79,9 +79,16 @@ TicTacToe.prototype.hasWon = function() {
   // grid[row][column]
   var grid = this.board.grid;
 
-  // A horizaontal match victory - all columns in same row are equal and none is null
+  // A horizontal match victory - all columns in same row are equal and none is null
   for (var i = 0; i < 3; i++) {
     if(grid[i][0] == grid[i][1] && grid[i][0] == grid[i][2] && grid[i][0] !== null){
+      return true;
+    }
+  }
+
+  // A vertical match victory - all rows in same column are equal and none is null
+  for (var j = 0; j < 3; j++) {
+    if(grid[0][j] == grid[1][j] && grid[0][j] == grid[2][j] && grid[0][j] !== null){
       return true;
     }
   }

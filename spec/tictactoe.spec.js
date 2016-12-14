@@ -131,6 +131,14 @@ describe('TicTacToe', function() {
 
     horizontalTicTacToe.board.grid = horizontalGrid;
 
+    var verticalGrid = [
+      ['X', 'O', 'X'],
+      ['X', 'O', 'O'],
+      ['X', null, null]
+    ];
+
+    verticalTicTacToe.board.grid = verticalGrid;
+
     it('should return FALSE if no one has won', function() {
       // incomplete board (contains null)
       expect(testTicTacToe.hasWon()).toBeFalsy();
@@ -144,6 +152,10 @@ describe('TicTacToe', function() {
 
     it('should return TRUE if 3 markers match horizontally', function() {
       expect(horizontalTicTacToe.hasWon()).toBeTruthy();
+    });
+
+    it('should return TRUE if 3 markers match vertically', function() {
+      expect(verticalTicTacToe.hasWon()).toBeTruthy();
     });
 
 
