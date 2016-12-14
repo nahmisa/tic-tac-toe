@@ -10,9 +10,6 @@ var TicTacToe = function() {
   this.currentPlayer = sample([0,1]);
 
   this.turns = 0;
-
-  this.prompt = require('prompt');
-
 };
 
 // helper function to wrap ugly random
@@ -38,9 +35,7 @@ TicTacToe.prototype.playTurn = function(prompt) {
 
       //   - update the board with a valid placement and players marker
       this.updateBoard(placement, player.marker);
-
-
-        break;
+      break;
     }
     //     - if FALSE, reprompt
   }
@@ -48,14 +43,13 @@ TicTacToe.prototype.playTurn = function(prompt) {
   //   - end the move
   this.endMove();
 
-  // if outputResult is FALSE, the game continues.  Otherwise, we can eventually display the result of the game.
-  return this.outputResult();
+  // if outputResult is FALSE, the game continues.  Otherwise, we return a string of the result of the game.
+  return this.outputResult(player);
 
 };
 
-TicTacToe.prototype.outputResult = function() {
+TicTacToe.prototype.outputResult = function(player) {
   //   - check if has won or if tie and report information
-  var player = this.players[this.currentPlayer];
 
   var result = "";
   if (this.hasWon() || this.turns == 9) {
