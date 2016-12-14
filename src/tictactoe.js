@@ -67,8 +67,14 @@ TicTacToe.prototype.endMove = function() {
   //   - switch current player
 
   this.addTurn();
-  // this.hasWon();
-  this.changePlayers();
+  if (this.turns >= 5 && !this.hasWon()) {
+    // only change players if hasWon is false after 5 turns
+    this.changePlayers();
+  } else if (this.turns < 5) {
+    // for the first 4 turns, always changePlayers because there is no chance of victory
+    this.changePlayers();
+  }
+
 };
 
 TicTacToe.prototype.addTurn = function() {
@@ -98,7 +104,6 @@ TicTacToe.prototype.hasWon = function() {
   if(grid[2][0] == grid[1][1] && grid[2][0] == grid[0][2] && grid[2][0] !== null){
     return true;
   }
-
     // - starting in the top left
   if(grid[0][0] == grid[1][1] && grid[0][0] == grid[2][2] && grid[0][0] !== null){
     return true;

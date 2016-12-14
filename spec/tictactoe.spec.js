@@ -89,7 +89,7 @@ describe('TicTacToe', function() {
 
   describe('endMove', function() {
 
-    it('should increment the games turns by 1 AND change the current player', function() {
+    it('should increment the games turns by 1 AND change the current player when turns are less than 5', function() {
       var gameTurns = testTicTacToe.turns;
       var originalPlayer = testTicTacToe.currentPlayer;
 
@@ -97,6 +97,47 @@ describe('TicTacToe', function() {
 
       expect(testTicTacToe.turns).toEqual(gameTurns + 1);
       expect(testTicTacToe.currentPlayer).not.toEqual(originalPlayer);
+
+    });
+
+    it('should increment the games turns by 1 AND change the current player when turns are equal to or more than 5 and no one has won', function() {
+      occupiedTicTacToe.turns = 5;
+      var gameTurns = occupiedTicTacToe.turns;
+      var originalPlayer = occupiedTicTacToe.currentPlayer;
+
+      occupiedTicTacToe.endMove();
+
+      expect(occupiedTicTacToe.turns).toEqual(gameTurns + 1);
+      expect(occupiedTicTacToe.currentPlayer).not.toEqual(originalPlayer);
+
+      // turns are now greater than 5 because of endMove increment
+      var gameTurns2 = occupiedTicTacToe.turns;
+      var originalPlayer2 = occupiedTicTacToe.currentPlayer;
+
+      occupiedTicTacToe.endMove();
+
+      expect(occupiedTicTacToe.turns).toEqual(gameTurns2 + 1);
+      expect(occupiedTicTacToe.currentPlayer).not.toEqual(originalPlayer2);
+
+    });
+
+    it('should increment the games turns by 1 AND NOT change the current player when turns are equal to or more than 5 AND someone has won', function() {
+      horizontalTicTacToe.turns = 5;
+      var horizontalGrid = [
+        ['X', 'X', 'X'],
+        ['O', null, 'O'],
+        [null, null, null]
+      ];
+
+      horizontalTicTacToe.board.grid = horizontalGrid;
+
+      var gameTurns = horizontalTicTacToe.turns;
+      var originalPlayer = horizontalTicTacToe.currentPlayer;
+
+      horizontalTicTacToe.endMove();
+
+      expect(horizontalTicTacToe.turns).toEqual(gameTurns + 1);
+      expect(horizontalTicTacToe.currentPlayer).toEqual(originalPlayer);
 
     });
 
