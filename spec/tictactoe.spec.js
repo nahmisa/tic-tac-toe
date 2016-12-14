@@ -9,7 +9,8 @@ describe('TicTacToe', function() {
   // Boards to check that we can win in various ways
   var verticalTicTacToe = new TicTacToe();
   var horizontalTicTacToe = new TicTacToe();
-  var diagonalTicTacToe = new TicTacToe();
+  var diagonalBottomTicTacToe = new TicTacToe();
+  var diagonalTopTicTacToe = new TicTacToe();
   var tieTicTacToe = new TicTacToe();
 
   describe('TicTacToe', function() {
@@ -139,6 +140,22 @@ describe('TicTacToe', function() {
 
     verticalTicTacToe.board.grid = verticalGrid;
 
+    var diagonalBottomGrid = [
+      ['X', 'O', 'X'],
+      ['O', 'X', 'O'],
+      ['X', null, null]
+    ];
+
+    diagonalBottomTicTacToe.board.grid = diagonalBottomGrid;
+
+    var diagonalTopGrid = [
+      ['X', 'O', 'X'],
+      ['O', 'X', null],
+      ['O', null, 'X']
+    ];
+
+    diagonalTopTicTacToe.board.grid = diagonalTopGrid;
+
     it('should return FALSE if no one has won', function() {
       // incomplete board (contains null)
       expect(testTicTacToe.hasWon()).toBeFalsy();
@@ -158,8 +175,10 @@ describe('TicTacToe', function() {
       expect(verticalTicTacToe.hasWon()).toBeTruthy();
     });
 
-
-
+    it('should return TRUE if 3 markers match diagonally', function() {
+      expect(diagonalBottomTicTacToe.hasWon()).toBeTruthy();
+      expect(diagonalTopTicTacToe.hasWon()).toBeTruthy();
+    });
 
   });
 

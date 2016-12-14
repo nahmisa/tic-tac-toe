@@ -93,6 +93,16 @@ TicTacToe.prototype.hasWon = function() {
     }
   }
 
+  // A diagonal match victory - need to validate two cases:
+    // - starting in the bottom left
+  if(grid[2][0] == grid[1][1] && grid[2][0] == grid[0][2] && grid[2][0] !== null){
+    return true;
+  }
+
+    // - starting in the top left
+  if(grid[0][0] == grid[1][1] && grid[0][0] == grid[2][2] && grid[0][0] !== null){
+    return true;
+  }
 
   return false;
 };
