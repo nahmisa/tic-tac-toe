@@ -28,9 +28,35 @@ describe('TicTacToe', function() {
   describe('playTurn', function() {
     var playTicTacToe = new TicTacToe();
 
+    var tieTicTacToe = new TicTacToe();
+    var winTicTacToe = new TicTacToe();
+
 
     it('should return FALSE when the game has not ended', function() {
       expect(playTicTacToe.playTurn([0,0])).toBeFalsy();
+    });
+
+    it('should output the correct message when the game is tied', function() {
+      tieTicTacToe.playTurn([0,0]);
+      tieTicTacToe.playTurn([0,1]);
+      tieTicTacToe.playTurn([0,2]);
+      tieTicTacToe.playTurn([1,0]);
+      tieTicTacToe.playTurn([1,2]);
+      tieTicTacToe.playTurn([1,1]);
+      tieTicTacToe.playTurn([2,0]);
+      tieTicTacToe.playTurn([2,2]);
+
+      expect(tieTicTacToe.playTurn([2,1])).toEqual("The Game is Over. You have tied.");
+    });
+
+    it('should output the correct message when the game is tied', function() {
+      winTicTacToe.playTurn([0,0]);
+      winTicTacToe.playTurn([0,1]);
+      winTicTacToe.playTurn([1,1]);
+      winTicTacToe.playTurn([2,1]);
+
+      var winner = winTicTacToe.players[winTicTacToe.currentPlayer];
+      expect(winTicTacToe.playTurn([2,2])).toEqual("The Game is Over. " + winner + " has won!" );
     });
 
   });

@@ -55,6 +55,7 @@ TicTacToe.prototype.playTurn = function(prompt) {
 
 TicTacToe.prototype.outputResult = function() {
   //   - check if has won or if tie and report information
+  var player = this.players[this.currentPlayer];
 
   var result = "";
   if (this.hasWon() || this.turns == 9) {
