@@ -25,7 +25,7 @@ describe('TicTacToe', function() {
 
   });
 
-  describe('playTurn', function() {
+  describe('playTurn and outputResult', function() {
     var playTicTacToe = new TicTacToe();
 
     var tieTicTacToe = new TicTacToe();
