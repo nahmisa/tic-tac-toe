@@ -11,6 +11,8 @@ var TicTacToe = function() {
 
   this.turns = 0;
 
+  this.prompt = require('prompt');
+
 };
 
 // helper function to wrap ugly random
@@ -19,21 +21,65 @@ function sample(array) {
   return array[index];
 }
 
-TicTacToe.prototype.move = function(placement) {
-  // A move will:
+TicTacToe.prototype.playTurn = function(prompt) {
+  // A turn will:
+
+  //   - know who the current player is
+
+  var player = this.players[this.currentPlayer];
+
+  while (true) {
+    //   - prompt for placement
+    var placement = prompt;
+
+    //   - check that the placement is valid
+    //     - will return FALSE or valid placement position
+    if (this.isValidPlacement(placement)) {
+
+      //   - update the board with a valid placement and players marker
+      this.updateBoard(placement, player.marker);
+
+
+        break;
+    }
+    //     - if FALSE, reprompt
+  }
+
+  //   - end the move
+  this.endMove();
+
+  // if outputResult is FALSE, the game continues.  Otherwise, we can eventually display the result of the game.
+  return this.outputResult();
+
+};
+
+TicTacToe.prototype.outputResult = function() {
+  //   - check if has won or if tie and report information
+
+  var result = "";
+  if (this.hasWon() || this.turns == 9) {
+    result += "The Game is Over. ";
+    if(this.hasWon()) {
+      result += player + " has won!";
+    } else {
+      result += "You have tied.";
+    }
+    return result;
+  }
+
+  return false;
+};
+
+
+
+TicTacToe.prototype.isValidPlacement = function(placement) {
+  // To be valid:
   //   - get the placement
   //      format of placement argument: [rowIndex, columnIndex]
   //   - check the board for valid placement
   //     - return FALSE if not valid
   //     - return the placement if valid
 
-  this.placement = placement;
-
-  return (this.isValidPlacement(this.placement) ? this.placement : false);
-
-};
-
-TicTacToe.prototype.isValidPlacement = function(placement) {
   this.placement = placement;
   this.row = this.placement[0];
   this.column = this.placement[1];

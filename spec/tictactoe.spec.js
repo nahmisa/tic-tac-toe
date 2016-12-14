@@ -25,13 +25,15 @@ describe('TicTacToe', function() {
 
   });
 
-  // describe('playTurn', function() {
-  //
-  //   it('should know who the current player is', function() {
-  //     expect(testTicTacToe.playTurn([0,0])).toBeTruthy();
-  //   });
-  //
-  // });
+  describe('playTurn', function() {
+    var playTicTacToe = new TicTacToe();
+
+
+    it('should return FALSE when the game has not ended', function() {
+      expect(playTicTacToe.playTurn([0,0])).toBeFalsy();
+    });
+
+  });
 
   describe('isValidPlacement', function() {
 
