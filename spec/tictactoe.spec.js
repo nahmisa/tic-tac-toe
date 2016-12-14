@@ -4,14 +4,6 @@ import TicTacToe from 'tictactoe';
 describe('TicTacToe', function() {
 
   var testTicTacToe = new TicTacToe();
-  var occupiedTicTacToe = new TicTacToe();
-
-  // Boards to check that we can win in various ways
-  var verticalTicTacToe = new TicTacToe();
-  var horizontalTicTacToe = new TicTacToe();
-  var diagonalBottomTicTacToe = new TicTacToe();
-  var diagonalTopTicTacToe = new TicTacToe();
-  var tieTicTacToe = new TicTacToe();
 
   describe('TicTacToe', function() {
     it('should be defined', function() {
@@ -33,13 +25,13 @@ describe('TicTacToe', function() {
 
   });
 
-  describe('move', function() {
-
-    it('should return the placement', function() {
-      expect(testTicTacToe.move([0,0])).toBeTruthy();
-    });
-
-  });
+  // describe('playTurn', function() {
+  //
+  //   it('should know who the current player is', function() {
+  //     expect(testTicTacToe.playTurn([0,0])).toBeTruthy();
+  //   });
+  //
+  // });
 
   describe('isValidPlacement', function() {
 
@@ -55,6 +47,7 @@ describe('TicTacToe', function() {
         [null, null, null]
       ];
 
+      var occupiedTicTacToe = new TicTacToe();
       occupiedTicTacToe.board.grid = occupiedGrid;
 
       expect(occupiedTicTacToe.isValidPlacement([0,0])).toBeFalsy();
@@ -101,43 +94,47 @@ describe('TicTacToe', function() {
     });
 
     it('should increment the games turns by 1 AND change the current player when turns are equal to or more than 5 and no one has won', function() {
-      occupiedTicTacToe.turns = 5;
-      var gameTurns = occupiedTicTacToe.turns;
-      var originalPlayer = occupiedTicTacToe.currentPlayer;
+      var turnTicTacToe = new TicTacToe();
 
-      occupiedTicTacToe.endMove();
+      turnTicTacToe.turns = 5;
+      var gameTurns = turnTicTacToe.turns;
+      var originalPlayer = turnTicTacToe.currentPlayer;
 
-      expect(occupiedTicTacToe.turns).toEqual(gameTurns + 1);
-      expect(occupiedTicTacToe.currentPlayer).not.toEqual(originalPlayer);
+      turnTicTacToe.endMove();
+
+      expect(turnTicTacToe.turns).toEqual(gameTurns + 1);
+      expect(turnTicTacToe.currentPlayer).not.toEqual(originalPlayer);
 
       // turns are now greater than 5 because of endMove increment
-      var gameTurns2 = occupiedTicTacToe.turns;
-      var originalPlayer2 = occupiedTicTacToe.currentPlayer;
+      var gameTurns2 = turnTicTacToe.turns;
+      var originalPlayer2 = turnTicTacToe.currentPlayer;
 
-      occupiedTicTacToe.endMove();
+      turnTicTacToe.endMove();
 
-      expect(occupiedTicTacToe.turns).toEqual(gameTurns2 + 1);
-      expect(occupiedTicTacToe.currentPlayer).not.toEqual(originalPlayer2);
+      expect(turnTicTacToe.turns).toEqual(gameTurns2 + 1);
+      expect(turnTicTacToe.currentPlayer).not.toEqual(originalPlayer2);
 
     });
 
     it('should increment the games turns by 1 AND NOT change the current player when turns are equal to or more than 5 AND someone has won', function() {
-      horizontalTicTacToe.turns = 5;
       var horizontalGrid = [
         ['X', 'X', 'X'],
         ['O', null, 'O'],
         [null, null, null]
       ];
+      var wonTicTacToe = new TicTacToe();
 
-      horizontalTicTacToe.board.grid = horizontalGrid;
+      wonTicTacToe.board.grid = horizontalGrid;
+      wonTicTacToe.turns = 5;
 
-      var gameTurns = horizontalTicTacToe.turns;
-      var originalPlayer = horizontalTicTacToe.currentPlayer;
 
-      horizontalTicTacToe.endMove();
+      var gameTurns = wonTicTacToe.turns;
+      var originalPlayer = wonTicTacToe.currentPlayer;
 
-      expect(horizontalTicTacToe.turns).toEqual(gameTurns + 1);
-      expect(horizontalTicTacToe.currentPlayer).toEqual(originalPlayer);
+      wonTicTacToe.endMove();
+
+      expect(wonTicTacToe.turns).toEqual(gameTurns + 1);
+      expect(wonTicTacToe.currentPlayer).toEqual(originalPlayer);
 
     });
 
@@ -157,50 +154,19 @@ describe('TicTacToe', function() {
 
   describe('hasWon', function() {
 
-    var tieGrid = [
-      ['X', 'O', 'X'],
-      ['O', 'X', 'O'],
-      ['O', 'X', 'O']
-    ];
-
-    tieTicTacToe.board.grid = tieGrid;
-
-    var horizontalGrid = [
-      ['X', 'X', 'X'],
-      ['O', null, 'O'],
-      [null, null, null]
-    ];
-
-    horizontalTicTacToe.board.grid = horizontalGrid;
-
-    var verticalGrid = [
-      ['X', 'O', 'X'],
-      ['X', 'O', 'O'],
-      ['X', null, null]
-    ];
-
-    verticalTicTacToe.board.grid = verticalGrid;
-
-    var diagonalBottomGrid = [
-      ['X', 'O', 'X'],
-      ['O', 'X', 'O'],
-      ['X', null, null]
-    ];
-
-    diagonalBottomTicTacToe.board.grid = diagonalBottomGrid;
-
-    var diagonalTopGrid = [
-      ['X', 'O', 'X'],
-      ['O', 'X', null],
-      ['O', null, 'X']
-    ];
-
-    diagonalTopTicTacToe.board.grid = diagonalTopGrid;
-
     it('should return FALSE if no one has won', function() {
       // incomplete board (contains null)
       expect(testTicTacToe.hasWon()).toBeFalsy();
       // complete board (tie)
+      var tieGrid = [
+        ['X', 'O', 'X'],
+        ['O', 'X', 'O'],
+        ['O', 'X', 'O']
+      ];
+      var tieTicTacToe = new TicTacToe();
+
+      tieTicTacToe.board.grid = tieGrid;
+
       expect(tieTicTacToe.hasWon()).toBeFalsy();
     });
 
@@ -209,15 +175,50 @@ describe('TicTacToe', function() {
     });
 
     it('should return TRUE if 3 markers match horizontally', function() {
+      var horizontalGrid = [
+        ['X', 'X', 'X'],
+        ['O', null, 'O'],
+        [null, null, null]
+      ];
+      var horizontalTicTacToe = new TicTacToe();
+
+      horizontalTicTacToe.board.grid = horizontalGrid;
+
       expect(horizontalTicTacToe.hasWon()).toBeTruthy();
     });
 
     it('should return TRUE if 3 markers match vertically', function() {
+      var verticalGrid = [
+            ['X', 'O', 'X'],
+            ['X', 'O', 'O'],
+            ['X', null, null]
+          ];
+      var verticalTicTacToe = new TicTacToe();
+
+      verticalTicTacToe.board.grid = verticalGrid;
+
       expect(verticalTicTacToe.hasWon()).toBeTruthy();
     });
 
     it('should return TRUE if 3 markers match diagonally', function() {
+      var diagonalBottomGrid = [
+        ['X', 'O', 'X'],
+        ['O', 'X', 'O'],
+        ['X', null, null]
+      ];
+      var diagonalBottomTicTacToe = new TicTacToe();
+
+      diagonalBottomTicTacToe.board.grid = diagonalBottomGrid;
       expect(diagonalBottomTicTacToe.hasWon()).toBeTruthy();
+
+      var diagonalTopGrid = [
+        ['X', 'O', 'X'],
+        ['O', 'X', null],
+        ['O', null, 'X']
+      ];
+      var diagonalTopTicTacToe = new TicTacToe();
+
+      diagonalTopTicTacToe.board.grid = diagonalTopGrid;
       expect(diagonalTopTicTacToe.hasWon()).toBeTruthy();
     });
 
