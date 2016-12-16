@@ -1,10 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Tic-Tac-Toe</title>
-    <meta charset="utf-8">
-  </head>
-  <body>
-    <script src="/app.bundle.js" charset="utf-8"></script>
-  </body>
+<head>
+  <title>Tic-Tac-Toe</title>
+  <meta charset="utf-8">
+</head>
+<body>
+
+  <div id="application">
+    <section>
+      <ol id="players"></ol>
+    </section>
+
+    <main>
+      <h1> Tic-Tac-Toe DeathMatch!  </h1>
+      <div id="current-player"></div>
+      <ul id="board-squares"></ul>
+    </main>
+
+  </div>
+  <!-- #application end-->
+
+
+  <!-- Underscore Templates -->
+
+    <!-- Player -->
+  <script type="text/template" id="tmpl-player">
+    <li class="single-player">
+      <h2><%- name + ": " + marker %>  </h2>
+    </li>
+  </script>
+
+    <!-- Square -->
+  <script type="text/template" id="tmpl-board-square">
+    <li class="board-square">
+      <h3><%- marker %></h3>
+    </li>
+  </script>
+
+  <script src="/app.bundle.js" charset="utf-8"></script>
+
+</body>
 </html>
