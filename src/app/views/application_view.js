@@ -12,11 +12,13 @@ const ApplicationView = Backbone.View.extend({
   initialize: function() {
     this.players_hash = [{
       name: "Sarah",
-      marker: "X"
+      marker: "X",
+      id: "1"
     },
     {
       name: "Heather",
-      marker: "O"
+      marker: "O",
+      id: "0"
     }];
 
     this.players = new Player(this.players_hash);
