@@ -7,15 +7,18 @@
 <body>
 
   <div id="application">
-    <section>
-      <ol id="players"></ol>
-    </section>
 
     <main>
       <h1> Tic-Tac-Toe DeathMatch!  </h1>
       <div id="current-player"></div>
       <ul id="board-squares"></ul>
     </main>
+
+    <section id="players">
+
+    </section>
+
+
 
   </div>
   <!-- #application end-->
@@ -25,9 +28,8 @@
 
     <!-- Player -->
   <script type="text/template" id="tmpl-player">
-    <li class="single-player">
       <h2><%- name + ": " + marker %>  </h2>
-    </li>
+
   </script>
 
     <!-- Square -->

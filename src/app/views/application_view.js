@@ -13,12 +13,10 @@ const ApplicationView = Backbone.View.extend({
     this.players_hash = [{
       name: "Sarah",
       marker: "X",
-      id: "1"
     },
     {
       name: "Heather",
       marker: "O",
-      id: "0"
     }];
 
     this.players = new Player(this.players_hash);
@@ -37,7 +35,12 @@ const ApplicationView = Backbone.View.extend({
 
 
   render: function() {
+    const playerView = new PlayerView({
+      model: this.players,
+      el: this.$('players')
+    });
 
+    playerView.render();
 
     return this;
   }
