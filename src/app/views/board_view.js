@@ -34,7 +34,7 @@ const BoardView = Backbone.View.extend({
 
     console.log(this.model);
 
-  this.render();
+    this.render();
   },
 
 
