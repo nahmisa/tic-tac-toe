@@ -3,10 +3,10 @@ import Backbone from 'backbone';
 import SquareView from 'app/views/square_view';
 
 const BoardView = Backbone.View.extend({
-  initialize: function(){
-
+  initialize: function(options){
+    // this.model = options.model;
     // we re-render the board when the model is updated (a square has been filled)
-    // this.listenTo(this.model, 'update', this.render);
+    this.listenTo(this.model, 'change', this.render);
 
     // change the player when we update the board by triggering a 'turn' event
     // this.listenTo(this.model, 'update', this.turn);
@@ -29,12 +29,14 @@ const BoardView = Backbone.View.extend({
     if(boardPosition === null) {
       this.grid[this.row][this.column] = 'X';
 
-      this.model.set('grid', this.grid);
+      this.model.set( 'grid', this.grid);
     }
+    this.model.trigger('change');
+      // this.model.save('grid');
 
-    console.log(this.model);
+      console.log(this.model);
 
-    this.render();
+    // this.render();
   },
 
 
