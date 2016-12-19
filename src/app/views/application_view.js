@@ -37,10 +37,19 @@ const ApplicationView = Backbone.View.extend({
   render: function() {
     const playerView = new PlayerView({
       model: this.players,
-      el: this.$('players')
+      el: this.$('#players')
     });
 
+    const boardView = new BoardView({
+      // the boardView is the grid portion of the board
+      model: this.board.get('grid'),
+      el: this.$('main')
+    });
+
+    console.log(this.board);
+
     playerView.render();
+    boardView.render();
 
     return this;
   }

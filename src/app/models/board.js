@@ -4,9 +4,9 @@ const Board = Backbone.Model.extend({
 
     defaults: {
         grid : [
-          [null, null, null],
-          [null, null, null],
-          [null, null, null]
+          ['X', null, null],
+          ['O', null, null],
+          [null, 'X', null]
         ]
     }
 
