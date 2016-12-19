@@ -1,5 +1,12 @@
+h1, h2, h3 {
+  font-family: 'Walter Turncoat', cursive;
+  text-align: center;
+  color: white;
+}
+
 body {
   margin: 10px 10%;
+  background-color: black;
 }
 
 #board-squares div {
