@@ -5,11 +5,13 @@ import SquareView from 'app/views/square_view';
 const BoardView = Backbone.View.extend({
   initialize: function(){
 
-  // we re-render the board when the model is updated (a square has been filled)
-  this.listenTo(this.model, 'update', this.render);
+    this.grid = this.model.get('grid');
 
-  // change the player when we update the board by triggering a 'turn' event
-  this.listenTo(this.model, 'update', this.turn);
+    // we re-render the board when the model is updated (a square has been filled)
+    this.listenTo(this.model, 'update', this.render);
+
+    // change the player when we update the board by triggering a 'turn' event
+    this.listenTo(this.model, 'update', this.turn);
 
 
   },
@@ -20,7 +22,7 @@ const BoardView = Backbone.View.extend({
 
   addMarker: function(marker) {
   // triggers an event
-  console.log('trying to add a marker ' + marker.model + ' at ' + marker.position);
+    console.log('trying to add a marker ' + marker.model + ' at ' + marker.position);
   },
 
 
@@ -31,7 +33,7 @@ const BoardView = Backbone.View.extend({
 
     const self = this;
 
-    this.model.forEach(function(row, index) {
+    this.grid.forEach(function(row, index) {
 
       var length = row.length;
       for (var i = 0; i < length; i++) {
@@ -41,7 +43,6 @@ const BoardView = Backbone.View.extend({
           position: [index, column]
         });
 
-        console.log(square);
         self.listenTo(square, 'select', self.addMarker);
         boardSquares.append(square.el).addClass('row small-up-3');
       }

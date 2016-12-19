@@ -41,8 +41,8 @@ const ApplicationView = Backbone.View.extend({
     });
 
     const boardView = new BoardView({
-      // the boardView is the grid portion of the board
-      model: this.board.get('grid'),
+
+      model: this.board,
       el: this.$('main')
     });
 
