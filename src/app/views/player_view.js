@@ -37,7 +37,7 @@ const PlayerView = Backbone.View.extend({
 
     // this.players[0].name = "Kate";
 
-    console.log(this.currentPlayer);
+    console.log(this.currentPlayerID);
 
 
 
@@ -45,9 +45,9 @@ const PlayerView = Backbone.View.extend({
 
     playerSection.html(this.currentPlayerTmpl);
 
-    this.currentPlayer = ((this.currentPlayer === 0) ? 1 : 0);
+    this.currentPlayerID = ((this.currentPlayerID === 0) ? 1 : 0);
 
-    console.log(this.currentPlayer);
+    console.log(this.currentPlayerID);
     return this;
   }
 
