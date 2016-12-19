@@ -18,9 +18,9 @@ const BoardView = Backbone.View.extend({
   // triggers an event
   },
 
-  addMarker: function() {
+  addMarker: function(marker) {
   // triggers an event
-  console.log('trying to add a marker');
+  console.log('trying to add a marker ' + marker.model + ' at ' + marker.position);
   },
 
 
@@ -30,12 +30,14 @@ const BoardView = Backbone.View.extend({
     // boardSquares.empty();
     const self = this;
 
-    this.model.forEach(function(row) {
-      // console.log(row);
+    this.model.forEach(function(row, index) {
+      // var rowPosition = 0;
       var length = row.length;
       for (var i = 0; i < length; i++) {
+        var column = i;
         const square = new SquareView({
-          model: row[i]
+          model: row[i],
+          position: [index, column]
           // el: Backbone.$('#board-squares')
 
         });
@@ -44,6 +46,8 @@ const BoardView = Backbone.View.extend({
         // console.log(square);
         boardSquares.append(square.el);
       }
+
+      // rowPosition++;
 
     });
     return this;

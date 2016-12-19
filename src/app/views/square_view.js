@@ -5,6 +5,7 @@ const SquareView = Backbone.View.extend({
   initialize: function(options){
     // clicks to tell the board to update itself
     this.model = options.model;
+    this.position = options.position;
     this.template = _.template(Backbone.$('#tmpl-board-square').html());
 
     this.render();
