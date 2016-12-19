@@ -29,20 +29,6 @@ const PlayerView = Backbone.View.extend({
     this.currentPlayer = this.model.attributes[this.currentPlayerID];
     this.currentPlayerTmpl = this.template(this.currentPlayer);
 
-// { 'name': this.currentPlayer.name, 'marker': this.currentPlayer.marker }
-
-
-
-    // this.currentPlayer = null;
-
-    // this.players[0].name = "Kate";
-
-    console.log(this.currentPlayerID);
-
-
-
-    // console.log(this.currentPlayer);
-
     playerSection.html(this.currentPlayerTmpl);
 
     this.currentPlayerID = ((this.currentPlayerID === 0) ? 1 : 0);

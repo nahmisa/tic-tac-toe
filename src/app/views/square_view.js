@@ -3,6 +3,7 @@ import Backbone from 'backbone';
 
 const SquareView = Backbone.View.extend({
   initialize: function(options){
+
     // clicks to tell the board to update itself
     this.model = options.model;
     this.position = options.position;
