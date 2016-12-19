@@ -35,10 +35,11 @@ const BoardView = Backbone.View.extend({
       var length = row.length;
       for (var i = 0; i < length; i++) {
         const square = new SquareView({
-          model: row[i],
-          el: Backbone.$('#board-squares')
+          model: row[i]
+          // el: Backbone.$('#board-squares')
 
         });
+        console.log(square);
         self.listenTo(square, 'select', self.addMarker);
         // console.log(square);
         boardSquares.append(square.el);
