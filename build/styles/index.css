@@ -1,0 +1,23 @@
+body {
+  margin: 10px 10%;
+}
+
+#board-squares div {
+  display: inline-block;
+}
+
+li {
+  list-style: none;
+  border: 2px solid purple;
+  height: 50px;
+  text-align: center;
+}
+
+#ttt-board {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.column {
+  padding: 0;
+}

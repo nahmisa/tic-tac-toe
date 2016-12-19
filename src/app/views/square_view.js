@@ -28,7 +28,7 @@ const SquareView = Backbone.View.extend({
 
 
   render: function() {
-    this.$el.append(this.template({ marker: this.model }));
+    this.$el.append(this.template({ marker: this.model })).addClass('column');
     return this;
   }
 

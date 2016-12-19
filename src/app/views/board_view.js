@@ -44,7 +44,7 @@ const BoardView = Backbone.View.extend({
         console.log(square);
         self.listenTo(square, 'select', self.addMarker);
         // console.log(square);
-        boardSquares.append(square.el);
+        boardSquares.append(square.el).addClass('row small-up-3');
       }
 
       // rowPosition++;
