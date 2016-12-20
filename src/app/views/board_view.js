@@ -16,25 +16,30 @@ const BoardView = Backbone.View.extend({
   // triggers an event
   },
 
-  addMarker: function(marker) {
+  selectedSquare: function(marker) {
   // triggers an event
-    console.log('trying to add a marker ' + marker.model + ' at ' + marker.position);
-    this.row = marker.position[0];
-    this.column = marker.position[1];
+    // console.log('trying to add a marker ' + marker.model + ' at ' + marker.position);
+    this.trigger('squareSelected', marker);
 
-    this.grid = this.model.get('grid');
+    // We return false to tell jQuery not to run any more event handlers.
 
-    var boardPosition = this.grid[this.row][this.column];
-
-    if(boardPosition === null) {
-      this.grid[this.row][this.column] = 'X';
-
-      this.model.set( 'grid', this.grid);
-    }
-    this.model.trigger('change');
+    return false;
+    // this.row = marker.position[0];
+    // this.column = marker.position[1];
+    //
+    // this.grid = this.model.get('grid');
+    //
+    // var boardPosition = this.grid[this.row][this.column];
+    //
+    // if(boardPosition === null) {
+    //   this.grid[this.row][this.column] = 'X';
+    //
+    //   this.model.set( 'grid', this.grid);
+    // }
+    // this.model.trigger('change');
       // this.model.save('grid');
 
-      console.log(this.model);
+      // console.log(this.model);
 
     // this.render();
   },
@@ -60,7 +65,7 @@ const BoardView = Backbone.View.extend({
           position: [index, column]
         });
 
-        self.listenTo(square, 'select', self.addMarker);
+        self.listenTo(square, 'select', self.selectedSquare);
         boardSquares.append(square.el).addClass('row small-up-3');
       }
 

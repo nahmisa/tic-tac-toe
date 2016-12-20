@@ -6,7 +6,7 @@ import SquareView from 'app/views/square_view';
 // models
 import Board from 'app/models/board';
 import Player from 'app/models/player';
-
+import TicTacToe from 'app/models/tictactoe';
 
 const ApplicationView = Backbone.View.extend({
   initialize: function() {
@@ -19,9 +19,11 @@ const ApplicationView = Backbone.View.extend({
       marker: "O",
     }];
 
-    this.players = new Player(this.players_hash);
+    this.players = this.model.get('players');
 
-    this.board = new Board();
+    this.board = this.model.get('board');
+
+    this.listenTo(this, 'change', this.render);
 
     console.log(this.players);
     console.log(this.board);
@@ -33,20 +35,26 @@ const ApplicationView = Backbone.View.extend({
 
   },
 
+  playTurn: function(marker) {
+    this.model.playTurn(marker.position);
+    this.trigger('change');
+  },
 
   render: function() {
     const playerView = new PlayerView({
-      model: this.players,
-      el: this.$('#players')
+      players: this.players,
+      el: this.$('#players'),
+      currentPlayer: this.model.get('currentPlayer')
     });
 
     const boardView = new BoardView({
-
       model: this.board,
       el: this.$('main')
     });
 
-    console.log(this.board);
+    this.listenTo(boardView, 'squareSelected', this.playTurn);
+
+    // console.log(this.board);
 
     playerView.render();
     boardView.render();

@@ -10,7 +10,7 @@ const TicTacToe = Backbone.Model.extend({
     player2: new Player({ name: "Player2", marker: "O" }),
     players: [],
     // pick randomly between 2 players: array of 0 and 1
-    currentPlayer: 0,
+
 
     turns: 0
   },
@@ -23,12 +23,14 @@ const TicTacToe = Backbone.Model.extend({
 
     this.set('board', new Board());
 
-    // var sample =  function(array = [0,1]) {
-    //   var index = Math.floor ( Math.random() * array.length );
-    //   return array[index];
-    // };
-    //
-    // this.set('currentPlayer', sample());
+    this.currentPlayer = 0;
+
+    var sample =  function(array = [0,1]) {
+      var index = Math.floor ( Math.random() * array.length );
+      return array[index];
+    };
+
+    this.set('currentPlayer', sample());
 
 
   },
@@ -40,7 +42,7 @@ const TicTacToe = Backbone.Model.extend({
     //   - know who the current player is
 
     var player = this.get('players')[this.get('currentPlayer')];
-
+    console.log(player);
     while (true) {
       //   - prompt for placement
       var placement = prompt;
@@ -55,13 +57,12 @@ const TicTacToe = Backbone.Model.extend({
       }
       //     - if FALSE, reprompt
     }
-
+    console.log(this.get('board').get('grid'));
     //   - end the move
     this.endMove();
 
     // if outputResult is FALSE, the game continues.  Otherwise, we return a string of the result of the game.
     return this.outputResult(player);
-
   },
 
   outputResult: function(player) {
