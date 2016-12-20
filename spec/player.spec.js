@@ -1,10 +1,10 @@
 // Do not remove
-import Player from 'player';
+import Player from 'app/models/player';
 
 describe('Player', function() {
 
-  var testPlayerX = new Player("Testy", "X");
-  var testPlayerO = new Player("Crabby", "O");
+  var testPlayerX = new Player({name: "Testy", marker: "X"});
+  var testPlayerO = new Player({name: "Crabby", marker: "O"});
 
   describe('Player', function() {
     it('should be defined', function() {
@@ -12,12 +12,12 @@ describe('Player', function() {
     });
 
     it('should have a name', function() {
-      expect(testPlayerX.name).toEqual("Testy");
+      expect(testPlayerX.get('name')).toEqual("Testy");
     });
 
     it('should be assigned a marker', function() {
-      expect(testPlayerX.marker).toEqual("X");
-      expect(testPlayerO.marker).toEqual("O");
+      expect(testPlayerX.get('marker')).toEqual("X");
+      expect(testPlayerO.get('marker')).toEqual("O");
     });
 
   });

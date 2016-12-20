@@ -1,5 +1,5 @@
 // Do not remove
-import Board from 'board';
+import Board from 'app/models/board';
 
 describe('Board', function() {
 
@@ -11,14 +11,14 @@ describe('Board', function() {
     });
 
     it('should have a grid', function() {
-      expect(testBoard.grid).toBeDefined();
+      expect(testBoard.get('grid')).toBeDefined();
     });
 
   });
 
   describe('grid', function() {
 
-    var grid = testBoard.grid;
+    var grid = testBoard.get('grid');
 
     it('should be an array', function() {
       expect(Array.isArray(grid)).toBe(true);
