@@ -10,9 +10,6 @@ describe('TicTacToe', function() {
   var testTicTacToe;
     beforeEach(function(){
       testTicTacToe = new TicTacToe();
-
-      console.log('rebuild >>' + testTicTacToe.get('board').get('grid'));
-
     });
 
     afterEach(function(){
@@ -48,12 +45,10 @@ describe('TicTacToe', function() {
 
 
     it('should return FALSE when the game has not ended', function() {
-      console.log(testTicTacToe.get('board').get('grid'));
       expect(playTicTacToe.playTurn([0,0])).toBeFalsy();
-      console.log('after' + testTicTacToe.get('board').get('grid'));
     });
 
-    xit('should output the correct message when the game is tied', function() {
+    it('should output the correct message when the game is tied', function() {
       tieTicTacToe.playTurn([0,0]);
       tieTicTacToe.playTurn([0,1]);
       tieTicTacToe.playTurn([0,2]);
@@ -66,7 +61,7 @@ describe('TicTacToe', function() {
       expect(tieTicTacToe.playTurn([2,1])).toEqual("The Game is Over. You have tied.");
     });
 
-    xit('should output the correct message when someone wins', function() {
+    it('should output the correct message when someone wins', function() {
       winTicTacToe.playTurn([0,0]);
       winTicTacToe.playTurn([0,1]);
       winTicTacToe.playTurn([1,1]);
@@ -86,9 +81,6 @@ describe('TicTacToe', function() {
 
     it('should return false if the placement on the board is already occupied', function() {
 
-      console.log('occupied' + testTicTacToe.get('board').get('grid'));
-
-
       var occupiedGrid = [
         ['X', 'O', null],
         [null, null, null],
@@ -98,25 +90,12 @@ describe('TicTacToe', function() {
       var occupiedTicTacToe = new TicTacToe();
       occupiedTicTacToe.get('board').set('grid', occupiedGrid);
 
-
-      console.log('set occupied' + testTicTacToe.get('board').get('grid'));
-
       expect(occupiedTicTacToe.isValidPlacement([0,0])).toBeFalsy();
 
-      console.log('occupied after' + testTicTacToe.get('board').get('grid'));
-
       var test = new TicTacToe();
-
-      console.log('TEST >>> ' + test.get('board').get('grid'));
-
-
-
-
     });
 
     it('should return true if the placement on the board is not occupied', function() {
-
-      // console.log('not' + testTicTacToe.get('board').get('grid'));
       expect(testTicTacToe.isValidPlacement([0, 1])).toBeTruthy();
     });
 
@@ -124,7 +103,7 @@ describe('TicTacToe', function() {
 
   describe('updateBoard', function() {
 
-    xit('should change the boards current value to the given marker', function() {
+    it('should change the boards current value to the given marker', function() {
       var boardPosxition = [0,0];
       var row = boardPosxition[0];
       var column = boardPosxition[1];
@@ -145,7 +124,7 @@ describe('TicTacToe', function() {
 
   describe('endMove', function() {
 
-    xit('should increment the games turns by 1 AND change the current player when turns are less than 5', function() {
+    it('should increment the games turns by 1 AND change the current player when turns are less than 5', function() {
       var gameTurns = testTicTacToe.get('turns');
       var originalPlayer = testTicTacToe.get('currentPlayer');
 
@@ -156,7 +135,7 @@ describe('TicTacToe', function() {
 
     });
 
-    xit('should increment the games turns by 1 AND change the current player when turns are equal to or more than 5 and no one has won', function() {
+    it('should increment the games turns by 1 AND change the current player when turns are equal to or more than 5 and no one has won', function() {
       var turnTicTacToe = new TicTacToe();
 
       turnTicTacToe.set('turns', 5);
@@ -179,7 +158,7 @@ describe('TicTacToe', function() {
 
     });
 
-    xit('should increment the games turns by 1 AND NOT change the current player when turns are equal to or more than 5 AND someone has won', function() {
+    it('should increment the games turns by 1 AND NOT change the current player when turns are equal to or more than 5 AND someone has won', function() {
       var horizontalGrid = [
         ['X', 'X', 'X'],
         ['O', null, 'O'],
@@ -205,7 +184,7 @@ describe('TicTacToe', function() {
 
   describe('addTurn', function() {
 
-    xit('should increment the games turns by 1', function() {
+    it('should increment the games turns by 1', function() {
       var gameTurns = testTicTacToe.get('turns');
 
       testTicTacToe.addTurn();
@@ -217,7 +196,7 @@ describe('TicTacToe', function() {
 
   describe('hasWon', function() {
 
-    xit('should return FALSE if no one has won', function() {
+    it('should return FALSE if no one has won', function() {
       // incomplete board (contains null)
       expect(testTicTacToe.hasWon()).toBeFalsy();
       // complete board (tie)
@@ -233,11 +212,11 @@ describe('TicTacToe', function() {
       expect(tieTicTacToe.hasWon()).toBeFalsy();
     });
 
-    xit('should not match nulls when evaluating markers for matches', function() {
+    it('should not match nulls when evaluating markers for matches', function() {
       expect(testTicTacToe.hasWon()).toBeFalsy();
     });
 
-    xit('should return TRUE if 3 markers match horizontally', function() {
+    it('should return TRUE if 3 markers match horizontally', function() {
       var horizontalGrid = [
         ['X', 'X', 'X'],
         ['O', null, 'O'],
@@ -250,7 +229,7 @@ describe('TicTacToe', function() {
       expect(horizontalTicTacToe.hasWon()).toBeTruthy();
     });
 
-    xit('should return TRUE if 3 markers match vertically', function() {
+    it('should return TRUE if 3 markers match vertically', function() {
       var verticalGrid = [
             ['X', 'O', 'X'],
             ['X', 'O', 'O'],
@@ -263,7 +242,7 @@ describe('TicTacToe', function() {
       expect(verticalTicTacToe.hasWon()).toBeTruthy();
     });
 
-    xit('should return TRUE if 3 markers match diagonally', function() {
+    it('should return TRUE if 3 markers match diagonally', function() {
       var diagonalBottomGrid = [
         ['X', 'O', 'X'],
         ['O', 'X', 'O'],
@@ -289,7 +268,7 @@ describe('TicTacToe', function() {
 
   describe('changePlayers', function() {
 
-    xit('change the current player to next player and back again', function() {
+    it('change the current player to next player and back again', function() {
       var originalPlayer = testTicTacToe.get('currentPlayer');
 
       testTicTacToe.changePlayers();
