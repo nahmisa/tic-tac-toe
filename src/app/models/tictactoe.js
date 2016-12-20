@@ -42,7 +42,7 @@ const TicTacToe = Backbone.Model.extend({
     //   - know who the current player is
 
     var player = this.get('players')[this.get('currentPlayer')];
-    console.log(player);
+    console.log(player.name);
     while (true) {
       //   - prompt for placement
       var placement = prompt;
@@ -72,7 +72,7 @@ const TicTacToe = Backbone.Model.extend({
     if (this.hasWon() || this.get('turns') == 9) {
       result += "The Game is Over. ";
       if(this.hasWon()) {
-        result += player + " has won!";
+        result += player.name + " has won!";
       } else {
         result += "You have tied.";
       }

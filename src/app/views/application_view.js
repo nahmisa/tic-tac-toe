@@ -36,7 +36,11 @@ const ApplicationView = Backbone.View.extend({
   },
 
   playTurn: function(marker) {
-    this.model.playTurn(marker.position);
+    var lastTurn = this.model.playTurn(marker.position);
+    if (lastTurn) {
+      alert(lastTurn);
+      this.initialize();
+    }  
     this.trigger('change');
   },
 
