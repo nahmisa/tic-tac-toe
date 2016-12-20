@@ -9,11 +9,14 @@ const TicTacToe = Backbone.Model.extend({
     player1: new Player({ name: "Player1", marker: "X" }),
     player2: new Player({ name: "Player2", marker: "O" }),
     players: [],
-    // pick randomly between 2 players: array of 0 and 1
-
-
     turns: 0
   },
+
+  url: 'https://safe-mesa-21103.herokuapp.com/api/v1',
+
+  // parse: function(data) {
+  //   return data.tasks;
+  // },
 
   initialize: function(options) {
 
