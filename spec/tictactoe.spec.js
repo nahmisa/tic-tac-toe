@@ -104,15 +104,15 @@ describe('TicTacToe', function() {
   describe('updateBoard', function() {
 
     it('should change the boards current value to the given marker', function() {
-      var boardPosxition = [0,0];
-      var row = boardPosxition[0];
-      var column = boardPosxition[1];
+      var boardPosition = [0,0];
+      var row = boardPosition[0];
+      var column = boardPosition[1];
 
       var boardValue = testTicTacToe.get('board').get('grid')[row][column];
 
       expect(boardValue).toBeNull();
 
-      testTicTacToe.updateBoard(boardPosxition, "X");
+      testTicTacToe.updateBoard(boardPosition, "X");
 
       var boardValueUpdate = testTicTacToe.get('board').get('grid')[row][column];
 
