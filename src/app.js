@@ -7,7 +7,7 @@ $(document).ready(function() {
   var ticTacToe = new TicTacToe({
   });
 
-  ticTacToe.fetch();
+  // ticTacToe.fetch();
 
   var appView = new ApplicationView({
     el: '#application',

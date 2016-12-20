@@ -12,7 +12,7 @@ const TicTacToe = Backbone.Model.extend({
     turns: 0
   },
 
-  url: 'https://safe-mesa-21103.herokuapp.com/api/v1',
+  // url: 'https://safe-mesa-21103.herokuapp.com/api/v1',
 
   // parse: function(data) {
   //   return data.tasks;
