@@ -45,8 +45,8 @@ const TicTacToe = Backbone.Model.extend({
     //   - know who the current player is
 
     var player = this.get('players')[this.get('currentPlayer')];
-    console.log(player.name);
-    while (true) {
+    // console.log(player.name);
+
       //   - prompt for placement
       var placement = prompt;
 
@@ -56,11 +56,12 @@ const TicTacToe = Backbone.Model.extend({
 
         //   - update the board with a valid placement and players marker
         this.updateBoard(placement, player.get('marker'));
-        break;
+      } else {
+        //     - if FALSE, reprompt/reclick
+        return false;
       }
-      //     - if FALSE, reprompt
-    }
-    console.log(this.get('board').get('grid'));
+
+    // console.log(this.get('board').get('grid'));
     //   - end the move
     this.endMove();
 
@@ -69,13 +70,15 @@ const TicTacToe = Backbone.Model.extend({
   },
 
   outputResult: function(player) {
+
+    var playerName = player.name;
     //   - check if has won or if tie and report information
 
     var result = "";
     if (this.hasWon() || this.get('turns') == 9) {
       result += "The Game is Over. ";
       if(this.hasWon()) {
-        result += player.name + " has won!";
+        result += playerName + " has won!";
       } else {
         result += "You have tied.";
       }

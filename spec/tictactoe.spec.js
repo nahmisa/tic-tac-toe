@@ -67,8 +67,9 @@ describe('TicTacToe', function() {
       winTicTacToe.playTurn([1,1]);
       winTicTacToe.playTurn([2,1]);
 
-      var winner = winTicTacToe.get('players')[winTicTacToe.get('currentPlayer')];
-      expect(winTicTacToe.playTurn([2,2])).toEqual("The Game is Over. " + winner + " has won!" );
+      var winnerName = winTicTacToe.get('players')[winTicTacToe.currentPlayer].name;
+
+      expect(winTicTacToe.playTurn([2,2])).toEqual("The Game is Over. " + winnerName + " has won!" );
     });
 
   });
