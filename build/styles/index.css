@@ -1,7 +1,17 @@
-h1, h2, h3 {
+h1, h2 {
   font-family: 'Press Start 2P', cursive;
   text-align: center;
   color: grey;
+}
+
+h1 {
+  font-size: 4vw;
+  margin-top: 2vw;
+}
+
+h2 {
+  font-size: 2vw;
+  margin-bottom: 0;
 }
 
 body {
