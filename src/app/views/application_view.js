@@ -33,7 +33,8 @@ const ApplicationView = Backbone.View.extend({
       // send competeled game to the api
       // create a new game (blank board)
       console.log(this.ticTacToe.getJson());
-      this.model.create(this.ticTacToe.getJson);
+      this.model.create(this.ticTacToe.getJson());
+      // this.model.save(this.ticTacToe.getJson());
     }
 
     this.trigger('change');

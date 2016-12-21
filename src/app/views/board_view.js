@@ -28,7 +28,6 @@ const BoardView = Backbone.View.extend({
     boardSquares.empty();
     // loop within a loop - we need to have access to the larger this
 
-    console.log('render' + this.model);
     const self = this;
     this.grid = this.model.get('grid');
 

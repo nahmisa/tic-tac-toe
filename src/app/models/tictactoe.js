@@ -48,7 +48,6 @@ const TicTacToe = Backbone.Model.extend({
     //   - know who the current player is
 
     var player = this.get('players')[this.get('currentPlayer')];
-    // console.log(player.name);
 
       //   - prompt for placement
       var placement = prompt;
@@ -219,8 +218,8 @@ const TicTacToe = Backbone.Model.extend({
   this.jsonPlayers = [
   this.get('player1').get('name'), this.get('player2').get('name')
       ];
-  this.jsonOutcome = "X";
-  this.jsonPlayedAt = "2016-11-20T22:59:10Z";
+  this.jsonOutcome = (this.hasWon() ? this.get('players')[this.get('currentPlayer')].get('marker') : 'draw');
+  this.jsonPlayedAt = new Date(new Date().getTime());
 
 
   this.json = {
@@ -240,8 +239,6 @@ const TicTacToe = Backbone.Model.extend({
     }
     return arr;
   }
-
-
 
 });
 
