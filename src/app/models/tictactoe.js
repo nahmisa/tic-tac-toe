@@ -35,6 +35,9 @@ const TicTacToe = Backbone.Model.extend({
 
     this.set('currentPlayer', sample());
 
+    // make an empty 'json object' for sending the completed game to the API
+    this.json = {};
+
 
   },
 
@@ -182,7 +185,64 @@ const TicTacToe = Backbone.Model.extend({
   changePlayers: function() {
     this.set('currentPlayer', ((this.get('currentPlayer') === 0) ? 1 : 0));
 
+  },
+
+  getJson: function() {
+//     {
+//   "id": 1,
+//   "board": [
+//     "X",
+//     " ",
+//     "O",
+//     "X",
+//     "O",
+//     " ",
+//     "X",
+//     " ",
+//     " "
+//   ],
+//   "players": [
+//     "X Player",
+//     "O Player"
+//   ],
+//   "outcome": "X",
+//   "played_at": "2016-11-20T22:59:10Z"
+// }
+
+  console.log(this.get('board').get('grid'));
+  this.grid = this.get('board').get('grid');
+
+  this.jsonBoard = [].concat.apply([], this.grid);
+  // replace null
+  this.replaceNull(this.jsonBoard);
+
+  this.jsonPlayers = [
+  this.get('player1').get('name'), this.get('player2').get('name')
+      ];
+  this.jsonOutcome = "X";
+  this.jsonPlayedAt = "2016-11-20T22:59:10Z";
+
+
+  this.json = {
+    "board": this.jsonBoard,
+    "players": this.jsonPlayers,
+    "outcome": this.jsonOutcome,
+    "played_at": this.jsonPlayedAt
+    };
+
+  return this.json;
+
+  },
+
+  replaceNull: function (arr) {
+    for (var i = 0, l = arr.length; i < l; i++) {
+        if (arr[i] === null) arr[i] = ' ';
+    }
+    return arr;
   }
+
+
+
 });
 
 module.exports = TicTacToe;

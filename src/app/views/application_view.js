@@ -11,17 +11,18 @@ import TicTacToe from 'app/models/tictactoe';
 const ApplicationView = Backbone.View.extend({
   initialize: function() {
 
-    this.players = this.model.get('players');
+    this.ticTacToe = this.model.game;
 
-    this.board = this.model.get('board');
+    this.board = this.ticTacToe.get('board');
+    this.players = this.ticTacToe.get('players');
 
     this.listenTo(this, 'change', this.render);
 
   },
 
   playTurn: function(marker) {
-    var isPlayable = this.model.isValidPlacement(marker.position);
-    var lastTurn = this.model.playTurn(marker.position);
+    var isPlayable = this.ticTacToe.isValidPlacement(marker.position);
+    var lastTurn = this.ticTacToe.playTurn(marker.position);
 
     if ( !isPlayable ) {
       alert("Invalid move! Pls try again.");
@@ -31,6 +32,8 @@ const ApplicationView = Backbone.View.extend({
       alert( lastTurn );
       // send competeled game to the api
       // create a new game (blank board)
+      console.log(this.ticTacToe.getJson());
+      this.model.create(this.ticTacToe.getJson);
     }
 
     this.trigger('change');
@@ -40,7 +43,7 @@ const ApplicationView = Backbone.View.extend({
     const playerView = new PlayerView({
       players: this.players,
       el: this.$('#players'),
-      currentPlayer: this.model.get('currentPlayer')
+      currentPlayer: this.ticTacToe.get('currentPlayer')
     });
 
     const boardView = new BoardView({
