@@ -13,4 +13,6 @@ $(document).ready(function() {
     el: '#application',
     model: ticTacToe
   });
+
+  appView.render();
 });

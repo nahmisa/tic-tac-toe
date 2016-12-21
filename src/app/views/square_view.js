@@ -7,7 +7,7 @@ const SquareView = Backbone.View.extend({
     // clicks to tell the board to update itself
     this.model = options.model;
     this.position = options.position;
-    this.template = _.template(Backbone.$('#tmpl-board-square').html());
+    this.class = options.numberClass;
 
     this.render();
   },
@@ -29,7 +29,7 @@ const SquareView = Backbone.View.extend({
 
 
   render: function() {
-    this.$el.append(this.template({ marker: this.model })).addClass('column');
+    this.$el.addClass('column').addClass(this.model + this.class);
     return this;
   }
 

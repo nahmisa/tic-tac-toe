@@ -62,7 +62,9 @@ const BoardView = Backbone.View.extend({
         var column = i;
         const square = new SquareView({
           model: row[i],
-          position: [index, column]
+          position: [index, column],
+          tagName: 'li',
+          numberClass: index + i
         });
 
         self.listenTo(square, 'select', self.selectedSquare);

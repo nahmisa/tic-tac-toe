@@ -1,23 +1,12 @@
 h1, h2, h3 {
-  font-family: 'Walter Turncoat', cursive;
+  font-family: 'Press Start 2P', cursive;
   text-align: center;
-  color: white;
+  color: grey;
 }
 
 body {
   margin: 10px 10%;
-  background-color: black;
-}
-
-#board-squares div {
-  display: inline-block;
-}
-
-li {
-  list-style: none;
-  border: 2px solid purple;
-  height: 50px;
-  text-align: center;
+  background-color: white;
 }
 
 #ttt-board {
@@ -25,6 +14,57 @@ li {
   margin: 0 auto;
 }
 
-.column {
-  padding: 0;
+li {
+  list-style: none;
+  border: .25vw solid white;
+  background-color: rgba(128, 128, 128, 0.4);
+  min-height: 11vw;
+  min-width: 11vw;
+  border-radius: .25rem;
+  padding: .25vw;
+}
+
+/*X Gradient*/
+
+.X0 {
+  background-color: #4A9E9D;
+
+}
+
+.X1 {
+  background-color: #4C8E99;
+}
+
+.X2 {
+  background-color: #4F8396;
+}
+
+.X3 {
+  background-color: #536B90;
+}
+
+.X4 {
+  background-color: #565D8E;
+}
+
+/*O Gradient*/
+
+.O0 {
+  background-color: #FFC271;
+}
+
+.O1 {
+  background-color: #FFB670;
+}
+
+.O2 {
+  background-color: #FFA570;
+}
+
+.O3 {
+  background-color: #FF936F;
+}
+
+.O4 {
+  background-color: #FF8A6F;
 }
