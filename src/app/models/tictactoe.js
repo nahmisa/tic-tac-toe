@@ -52,7 +52,7 @@ const TicTacToe = Backbone.Model.extend({
 
       //   - check that the placement is valid
       //     - will return FALSE or valid placement position
-      if (this.isValidPlacement(placement)) {
+      if (this.isValidPlacement(placement) && !this.hasWon() ) {
 
         //   - update the board with a valid placement and players marker
         this.updateBoard(placement, player.get('marker'));
