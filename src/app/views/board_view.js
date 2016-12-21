@@ -17,31 +17,12 @@ const BoardView = Backbone.View.extend({
   },
 
   selectedSquare: function(marker) {
-  // triggers an event
-    // console.log('trying to add a marker ' + marker.model + ' at ' + marker.position);
+    // we need to pass this up to the board which will update the model
     this.trigger('squareSelected', marker);
 
     // We return false to tell jQuery not to run any more event handlers.
 
     return false;
-    // this.row = marker.position[0];
-    // this.column = marker.position[1];
-    //
-    // this.grid = this.model.get('grid');
-    //
-    // var boardPosition = this.grid[this.row][this.column];
-    //
-    // if(boardPosition === null) {
-    //   this.grid[this.row][this.column] = 'X';
-    //
-    //   this.model.set( 'grid', this.grid);
-    // }
-    // this.model.trigger('change');
-      // this.model.save('grid');
-
-      // console.log(this.model);
-
-    // this.render();
   },
 
 
