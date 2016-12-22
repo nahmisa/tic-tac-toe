@@ -44,13 +44,20 @@ li {
   margin: 1vw;
 }
 
-#played-games > li:hover { background-color: rgba(128, 128, 128, 1); }
+#played-games > li:hover {
+  background-color: rgba(128, 128, 128, 1);
+  padding: 2vw;
+  padding-top: 3vw;
+}
 
 #played-games > li:hover h3::before {
   font-family: FontAwesome;
   content: '\f1f8';
   color: white;
   padding-left: 15vw;
+  font-size: 3vw;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 /*X Gradient*/
