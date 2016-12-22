@@ -8,7 +8,6 @@ $(document).ready(function() {
 
   });
 
-  games.fetch();
 
   var appView = new ApplicationView({
     el: '#application',

@@ -12,12 +12,6 @@ const TicTacToe = Backbone.Model.extend({
     turns: 0
   },
 
-  // url: 'https://safe-mesa-21103.herokuapp.com/api/v1',
-
-  // parse: function(data) {
-  //   return data.tasks;
-  // },
-
   initialize: function(options) {
 
     var playersHash = [this.get('player1'), this.get('player2')];
@@ -63,7 +57,6 @@ const TicTacToe = Backbone.Model.extend({
         return false;
       }
 
-    // console.log(this.get('board').get('grid'));
     //   - end the move
     this.endMove();
 
@@ -208,7 +201,6 @@ const TicTacToe = Backbone.Model.extend({
 //   "played_at": "2016-11-20T22:59:10Z"
 // }
 
-  console.log(this.get('board').get('grid'));
   this.grid = this.get('board').get('grid');
 
   this.jsonBoard = [].concat.apply([], this.grid);

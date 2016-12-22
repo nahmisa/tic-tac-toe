@@ -16,10 +16,6 @@ const PlayerView = Backbone.View.extend({
 
     this.currentPlayerID = options.currentPlayer;
 
-    // we re-render the player view when the player changes - not sure how this works yet!
-    // this could listen for turn even from board_view?
-    // this.listenTo(this.model, 'turn', this.render);
-
   },
 
 
@@ -35,7 +31,6 @@ const PlayerView = Backbone.View.extend({
 
     this.currentPlayerID = ((this.currentPlayerID === 0) ? 1 : 0);
 
-    console.log(this.currentPlayerID);
     return this;
   }
 

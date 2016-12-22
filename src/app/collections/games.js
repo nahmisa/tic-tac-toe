@@ -9,9 +9,7 @@ var Games = Backbone.Collection.extend({
   game: new TicTacToe({}),
   url: 'https://safe-mesa-21103.herokuapp.com/api/v1/games',
   parse: function(data) {
-
-
-    return data.tasks;
+    return data;
   }
 
 });

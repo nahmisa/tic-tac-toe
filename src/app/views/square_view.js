@@ -17,8 +17,6 @@ const SquareView = Backbone.View.extend({
   },
 
   onClick: function(e) {
-    console.log(">>> BREADCRUMBS: select click");
-
     this.trigger('select', this);
 
     // We return false to tell jQuery not to run any more event handlers.

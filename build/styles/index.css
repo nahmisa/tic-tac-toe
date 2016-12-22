@@ -1,4 +1,4 @@
-h1, h2 {
+h1, h2, h3 {
   font-family: 'Press Start 2P', cursive;
   text-align: center;
   color: grey;
@@ -6,10 +6,11 @@ h1, h2 {
 
 h1 {
   font-size: 4vw;
-  margin-top: 2vw;
+  margin: 3vw;
+
 }
 
-h2 {
+h2, h3 {
   font-size: 2vw;
   margin-bottom: 0;
 }
@@ -19,7 +20,7 @@ body {
   background-color: white;
 }
 
-#ttt-board {
+#ttt-board, #played-games {
   width: 60%;
   margin: 0 auto;
 }
@@ -34,47 +35,44 @@ li {
   padding: .25vw;
 }
 
+#players {
+  margin-bottom: 2vw;
+}
+
+#played-games > li {
+  padding: 4vw;
+  margin: 1vw;
+}
+
+#played-games > li:hover { background-color: rgba(128, 128, 128, 1); }
+
+#played-games > li:hover h3::before {
+  font-family: FontAwesome;
+  content: '\f1f8';
+  color: white;
+  padding-left: 15vw;
+}
+
 /*X Gradient*/
 
-.X0 {
-  background-color: #4A9E9D;
+.X0 { background-color: #4A9E9D; }
 
-}
+.X1 { background-color: #4C8E99; }
 
-.X1 {
-  background-color: #4C8E99;
-}
+.X2 { background-color: #4F8396; }
 
-.X2 {
-  background-color: #4F8396;
-}
+.X3 { background-color: #536B90; }
 
-.X3 {
-  background-color: #536B90;
-}
-
-.X4 {
-  background-color: #565D8E;
-}
+.X4 { background-color: #565D8E; }
 
 /*O Gradient*/
 
-.O0 {
-  background-color: #FFC271;
-}
+.O0 { background-color: #FFC271; }
 
-.O1 {
-  background-color: #FFB670;
-}
+.O1 { background-color: #FFB670; }
 
-.O2 {
-  background-color: #FFA570;
-}
+.O2 { background-color: #FFA570; }
 
-.O3 {
-  background-color: #FF936F;
-}
+.O3 { background-color: #FF936F; }
 
-.O4 {
-  background-color: #FF8A6F;
-}
+.O4 { background-color: #FF8A6F; }

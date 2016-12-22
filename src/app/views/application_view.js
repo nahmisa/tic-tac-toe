@@ -2,6 +2,7 @@ import Backbone from 'backbone';
 import BoardView from 'app/views/board_view';
 import PlayerView from 'app/views/player_view';
 import SquareView from 'app/views/square_view';
+import GamesView from 'app/views/games_view';
 
 // models
 import Board from 'app/models/board';
@@ -31,16 +32,21 @@ const ApplicationView = Backbone.View.extend({
     } else if ( lastTurn ) {
       alert( lastTurn );
       // send competeled game to the api
-      // create a new game (blank board)
-      console.log(this.ticTacToe.getJson());
+      // create a new game
+
       this.model.create(this.ticTacToe.getJson());
-      // this.model.save(this.ticTacToe.getJson());
+      this.trigger('change');
+
     }
 
-    this.trigger('change');
+      this.trigger('change');
   },
 
   render: function() {
+    // we need to fetch up here for updates to show - idk why?
+    this.model.fetch();
+
+
     const playerView = new PlayerView({
       players: this.players,
       el: this.$('#players'),
@@ -56,6 +62,19 @@ const ApplicationView = Backbone.View.extend({
 
     playerView.render();
     boardView.render();
+
+
+    const self = this;
+
+    this.model.fetch().done(function() {
+      const gamesView = new GamesView({
+        model: self.model,
+        el: self.$('body')
+      });
+
+      // gamesView.render();
+
+    });
 
     return this;
   }
